@@ -115,7 +115,7 @@ public class Main {
             List<String> stringsName = Files.readAllLines(
                     new File("output/strings_name.txt").toPath(), StandardCharsets.UTF_8);
             List<String> convertedStringsContent = Files.readAllLines(
-                    new File("output/strings_content_converted.txt").toPath(), StandardCharsets.UTF_8);
+                    new File("input/strings_content_converted.txt").toPath(), StandardCharsets.UTF_8);
 
             // create our output file
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File("output/strings.xml")));
