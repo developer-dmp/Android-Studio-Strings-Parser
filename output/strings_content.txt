@@ -1,8 +1,8 @@
-550594195285470
-fb550594195285470
 Jalebi
 Login
 Home
+550594195285470
+fb550594195285470
 Search Jalebi
 Delete
 Edit
@@ -33,7 +33,7 @@ Profile
 Invalid contact, please try again.
 Error, please try again.
 Could not format URL
-Unable to retrieve profile information
+Unable to retrieve homeFragmentProfile information
 Undefined
 Enter information or cancel
 Cancel
