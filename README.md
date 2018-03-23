@@ -35,8 +35,8 @@ Here is the flow:
 1. Clone the project to your machine
 2. Add your strings.xml file to the <i>input</i> directory
 3. Run the program to parse strings.xml file
-4. Copy the output in the file <i>output\strings_content.txt</i> into Google Translate and translate the whole file into your language of choice
-5. Paste the output from Google Translate into <i>input\strings_content_converted.txt</i>
+4. Copy the output in the file <i>output/strings_content.txt</i> into Google Translate and translate the whole file into your language of choice
+5. Paste the output from Google Translate into <i>input/strings_content_converted.txt</i>
 6. Run the program to rebuild the strings.xml file
 
 Boom.  You now have a properly formatted strings.xml file in <i>output/strings.xml</i> that is an exact copy of the one you started with except it has the content for whatever foreign language you chose in Google Translate.  
