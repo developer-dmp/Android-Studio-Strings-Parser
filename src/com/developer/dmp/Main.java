@@ -83,11 +83,17 @@ public class Main {
     private static void recreateStringsFile() {
 
         try {
-            List<String> stringsName = Files.readAllLines(new File("output/strings_name.txt").toPath(), StandardCharsets.UTF_8);
-            List<String> convertedStringsContent = Files.readAllLines(new File("output/strings_content_converted.txt").toPath(), StandardCharsets.UTF_8);
+            // get all the content from the two files
+            List<String> stringsName = Files.readAllLines(
+                    new File("output/strings_name.txt").toPath(), StandardCharsets.UTF_8);
+            List<String> convertedStringsContent = Files.readAllLines(
+                    new File("output/strings_content_converted.txt").toPath(), StandardCharsets.UTF_8);
 
+            // create our output file
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File("output/strings.xml")));
             writer.write(RESOURCES_OPEN+"\n");
+
+            // loop to recreate strings.xml file
             for (int i = 0; i < stringsName.size(); i++) {
                 writeToFile(stringsName.get(i), convertedStringsContent.get(i), writer);
             }
@@ -98,8 +104,17 @@ public class Main {
         }
     }
 
+    /**
+     * Helper method to write information to a file to rebuild the strings.xml
+     * file format for Android Studio
+     *
+     * @param name - the name of the string
+     * @param content - the content converted to whatever language
+     * @param writer - object to access a direct file
+     * @throws IOException - if we have trouble writing to file
+     */
     private static void writeToFile(String name, String content, BufferedWriter writer) throws IOException {
-        writer.write(XML_PART_1+name+XML_PART_2+content+XML_PART_3+"\n");
+        writer.write("\t"+XML_PART_1+name+XML_PART_2+content+XML_PART_3+"\n");
     }
 
     /**
