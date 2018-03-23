@@ -20,7 +20,7 @@ and this would be how to support Spanish:
 Notice how the name of the string remains the same but the content has changed.  This allows you to develop your application using references instead of the actual text (i.e. you would reference the string by R.string.hello instead of using the text 'Hello').  Android does things this way because the OS will detect which language the phone is configured for and use the corresponding strings.xml file.  If your device is in the United States and the primary language is English, the operating system will look for a strings.xml file that is configured with meta data 'en_US'.  If your device resides in Spain and is configured for Spanish, the OS will look for a strings.xml file with meta data 'sp_ES'.  This information of county codes can be found online.
 
 ## The Issue
-Android's framework is pretty smart for doing things this way - it allows the developers to not have to worry about other languages not being displayed, but it provides a decent amount of work when it comes time to publishing.  What happens when your strings.xml file is 200 lines long and you want to support 100 languages.  That's 20,000 total strings with 100 duplicates - one for each different langauge.  AND the only thing that changes from string file to string file is the content within the <string></string> tags!
+Android's framework is pretty smart for doing things this way - it allows the developers to not worry about foreign languages not being displayed, but it provides a decent amount of work when it comes time to publishing.  What happens when your strings.xml file is 200 lines long and you want to support 100 languages?  That's 20,000 total strings with 100 duplicates - one for each different langauge.  AND the only thing that changes from string file to string file is the content within the <string></string> tags!
 
 The Google Play Console does have a professional translating service for your app, however this takes time proportional to the number of strings and comes at a price.  Google will, for 7 cents a word, translate your entire app into however many languages you want.  So those 100 languages you wanted your app to support will now cost you $1,386.  Feel free to pay that if you'd like - 200 strings in your file is a decently large file, and 100 languages is a lot so this may be over-exaggerating but you get the point.  
 
@@ -39,6 +39,8 @@ Here is the flow:
 5. Paste the output from Google Translate into <i>input\strings_content_converted.txt</i>
 6. Run the program to rebuild the strings.xml file
 
-Boom.  You now have a properly formatted strings.xml file that is an exact copy of the one you started with except it has the content for whatever other language you chose in Google Translate.  
+Boom.  You now have a properly formatted strings.xml file in <i>output/strings.xml</i> that is an exact copy of the one you started with except it has the content for whatever foreign language you chose in Google Translate.  
 
 When running this again (for another language you want to support), you can skip to step 5 with the content for your new language.  Steps 1-4 are only required the FIRST time the program runs.
+
+Hope this can help you!
