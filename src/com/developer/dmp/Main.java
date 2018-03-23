@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -22,19 +23,45 @@ public class Main {
     private static final String XML_PART_3 = "</string>";
     private static final String RESOURCES_OPEN = "<resources>";
     private static final String RESOURCES_CLOSE = "</resources>";
-    private static final String OUTPUT_DELIM = "********************";
+    private static final String OUTPUT_DELIM = "####################";
+    private static final String HELP_MESSAGE = "******* MENU *******" +
+            "\n1. Parse Android Studio strings.xml file" +
+            "\n2. Rebuild Android Studio strings.xml file";
 
     public static void main(String[] args) {
 
-        print("Parsing strings file...");
-        parseStringsFile();
-        print("Done!");
+        Scanner input = new Scanner(System.in);
+        String choice;
+        boolean valid;
 
-        print(OUTPUT_DELIM);
+        // present user with menu and act accordingly
+        do {
+            print(HELP_MESSAGE);
+            System.out.print("> ");
+            choice = input.nextLine();
+            valid = false;
 
-        print("Re-creating strings.xml");
-        recreateStringsFile();
-        print("Done!");
+            switch (choice) {
+                case "1":
+                    valid = true;
+                    print("\n"+OUTPUT_DELIM);
+                    print("Parsing strings file...");
+                    parseStringsFile();
+                    print("Done!");
+                    print(OUTPUT_DELIM+"\n");
+                    break;
+                case "2":
+                    valid = true;
+                    print("\n"+OUTPUT_DELIM);
+                    print("Re-creating strings.xml");
+                    recreateStringsFile();
+                    print("Done!");
+                    print(OUTPUT_DELIM+"\n");
+                    break;
+            }
+        } while (valid);
+
+        print("Program terminated.");
     }
 
     /**
@@ -45,6 +72,7 @@ public class Main {
      */
     private static void parseStringsFile() {
         try {
+            // obtain and read our xml file - this comes from Android Studio
             File inputFile = new File("input/strings.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
